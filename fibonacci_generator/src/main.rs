@@ -1,16 +1,29 @@
-use std::io;
+use std::io::stdin;
 
 fn main() {
 	loop {
 		let mut num = String::new();
 		println!("Enter number:");
-		let _ = io::stdin().read_line(&mut num);
+
+		let _ = stdin().read_line(&mut num);
+
+		if num.trim() == "quit" {
+			println!("Quitting");
+			break;
+		}
+
 		let num = num.trim().parse::<u8>().expect("invalid number");
-		println!("Number in fibonacci sequence: {:#}", fibonacci(num).to_string())
+
+		if num > 186 {
+			println!("Number too large, displaying output for 186 instead");
+		}
+
+		println!("Number in fibonacci sequence: {:#}", fibonacci(&num))
 	}
 }
 
-fn fibonacci (n: u8) -> u128{
+fn fibonacci (f: &u8) -> u128{
+	let n = f.to_owned();
 	let index = if n > 186 {186} else {n};
 	let mut last_value:[u128; 256] = [1; 256];
 	for i in 2..index {
