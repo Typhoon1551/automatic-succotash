@@ -1,5 +1,5 @@
 use std::io::stdin;
-
+ 
 fn main() {
 	loop {
 		let mut num = String::new();
@@ -22,9 +22,8 @@ fn main() {
 	}
 }
 
-fn fibonacci (f: &u8) -> u128{
-	let n = f.to_owned();
-	let index = if n > 186 {186} else {n};
+fn fibonacci (n: &u8) -> u128{
+	let index = if n > &186 {186} else {n.to_owned()};
 	let mut last_value:[u128; 256] = [1; 256];
 	for i in 2..index {
 		last_value[i as usize] = last_value[(i-2) as usize] + last_value[(i-1) as usize];
