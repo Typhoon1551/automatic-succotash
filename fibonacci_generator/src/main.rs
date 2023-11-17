@@ -2,23 +2,23 @@ use std::io::stdin;
  
 fn main() {
 	loop {
-		let mut num = String::new();
+		let mut number = String::new();
 		println!("Enter number:");
 
-		let _ = stdin().read_line(&mut num);
+		let _ = stdin().read_line(&mut number);
 
-		if num.trim() == "quit" {
+		if number.trim() == "quit" {
 			println!("Quitting");
 			break;
 		}
 
-		let num = num.trim().parse::<u8>().expect("invalid number");
+		let number = number.trim().parse::<u8>().expect("invalid number");
 
-		if num > 186 {
+		if number > 186 {
 			println!("Number too large, displaying output for 186 instead");
 		}
 
-		println!("Number in fibonacci sequence: {:#}", fibonacci(&num))
+		println!("Number in fibonacci sequence: {:#}", fibonacci(&number))
 	}
 }
 
